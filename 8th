@@ -1,0 +1,27 @@
+/*Chef wants to become fit for which he decided to walk to the office and return home by walking. It is known that Chef's office is 
+X km away from his homeIf his office is open on 5 days in a week, 
+find the number of kilometers Chef travels through office trips in a week.*/
+
+
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		while (T>0){
+		    int X = sc.nextInt();
+		    System.out.println( X*5*2 );
+		T--;
+		    
+		}
+	}
+}
