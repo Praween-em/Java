@@ -1,0 +1,82 @@
+/*Scenario 6: Airline Reservation System
+Problem: Implement an airline reservation system that allows users to book flights and view their reservations.*/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Flight {
+    private String flightNumber;
+    private String destination;
+    private int seatsAvailable;
+
+    public Flight(String flightNumber, String destination, int seatsAvailable) {
+        this.flightNumber = flightNumber;
+        this.destination = destination;
+        this.seatsAvailable = seatsAvailable;
+    }
+
+    public String getFlightNumber() {
+        return flightNumber;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public int getSeatsAvailable() {
+        return seatsAvailable;
+    }
+
+    public boolean reserveSeat() {
+        if (seatsAvailable > 0) {
+            seatsAvailable--;
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+class Passenger {
+    private String name;
+    private List<Flight> reservations;
+
+    public Passenger(String name) {
+        this.name = name;
+        this.reservations = new ArrayList<>();
+    }
+
+    public void bookFlight(Flight flight) {
+        if (flight.reserveSeat()) {
+            reservations.add(flight);
+            System.out.println("Flight " + flight.getFlightNumber() + " booked successfully for passenger " + name);
+        } else {
+            System.out.println("No seats available on flight " + flight.getFlightNumber());
+        }
+    }
+
+    public void viewReservations() {
+        System.out.println("Flight Reservations for Passenger " + name + ":");
+        for (Flight flight : reservations) {
+            System.out.println(flight.getFlightNumber() + " - " + flight.getDestination());
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Flight flight1 = new Flight("FL001", "New York", 100);
+        Flight flight2 = new Flight("FL002", "London", 50);
+
+        Passenger passenger1 = new Passenger("John");
+        Passenger passenger2 = new Passenger("Jane");
+
+        passenger1.bookFlight(flight1);
+        passenger1.bookFlight(flight2);
+
+        passenger2.bookFlight(flight2);
+
+        passenger1.viewReservations();
+        passenger2.viewReservations();
+    }
+}
