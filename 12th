@@ -1,0 +1,47 @@
+/*//Scenario 3: Bank Account Management
+Problem: Implement a bank account management system with functionalities like deposit, withdrawal, and balance inquiry.//*/
+
+class BankAccount {
+    private String accountNumber;
+    private double balance;
+
+    public BankAccount(String accountNumber) {
+        this.accountNumber = accountNumber;
+        this.balance = 0;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+        } else {
+            System.out.println("Insufficient balance.");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount("1234567890");
+
+        account.deposit(1000);
+        System.out.println("Account Balance: $" + account.getBalance());
+
+        account.withdraw(500);
+        System.out.println("Account Balance: $" + account.getBalance());
+
+        account.withdraw(800);
+        System.out.println("Account Balance: $" + account.getBalance());
+    }
+}
