@@ -1,0 +1,50 @@
+/*//Scenario 2: Student Grade Calculation
+Problem: Calculate the average grade for a group of students based on their individual test scores.//*/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Student {
+    private String name;
+    private List<Double> testScores;
+
+    public Student(String name, List<Double> testScores) {
+        this.name = name;
+        this.testScores = testScores;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double calculateAverageScore() {
+        double sum = 0;
+        for (Double score : testScores) {
+            sum += score;
+        }
+        return sum / testScores.size();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Double> student1Scores = new ArrayList<>();
+        student1Scores.add(90.0);
+        student1Scores.add(85.0);
+        student1Scores.add(95.0);
+
+        List<Double> student2Scores = new ArrayList<>();
+        student2Scores.add(80.0);
+        student2Scores.add(75.0);
+        student2Scores.add(70.0);
+
+        Student student1 = new Student("John", student1Scores);
+        Student student2 = new Student("Jane", student2Scores);
+
+        double averageScore1 = student1.calculateAverageScore();
+        double averageScore2 = student2.calculateAverageScore();
+
+        System.out.println(student1.getName() + "'s Average Score: " + averageScore1);
+        System.out.println(student2.getName() + "'s Average Score: " + averageScore2);
+    }
+}
