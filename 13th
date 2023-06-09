@@ -1,0 +1,68 @@
+/*Scenario 4: Library Management System
+Problem: Implement a library management system that allows users to add books, borrow books, and return books.*/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Book {
+    private String title;
+    private String author;
+    private boolean available;
+
+    public Book(String title, String author) {
+        this.title = title;
+        this.author = author;
+        this.available = true;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void borrowBook() {
+        if (available) {
+            available = false;
+            System.out.println("Book " + title + " borrowed successfully.");
+        } else {
+            System.out.println("Book " + title + " is currently unavailable.");
+        }
+    }
+
+    public void returnBook() {
+        if (!available) {
+            available = true;
+            System.out.println("Book " + title + " returned successfully.");
+        } else {
+            System.out.println("Book " + title + " is already available.");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Book> books = new ArrayList<>();
+
+        Book book1 = new Book("Java Programming", "John Smith");
+        Book book2 = new Book("Data Structures", "Jane Doe");
+
+        books.add(book1);
+        books.add(book2);
+
+        // Borrow a book
+        book1.borrowBook();
+
+        // Try to borrow the same book again
+        book1.borrowBook();
+
+        // Return a book
+        book1.returnBook();
+    }
+}
